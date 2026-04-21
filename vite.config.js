@@ -2,6 +2,7 @@ import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { resolve } from 'path'
+import entryMergePlugin from './scripts/vite-plugin-entry-merge.js'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,6 +15,10 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    entryMergePlugin({
+      entryDir: resolve(__dirname, 'entry'),
+      outputFile: 'all-entrys.json'
+    }),
   ],
   resolve: {
     alias: {
